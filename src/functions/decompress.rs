@@ -23,3 +23,35 @@ pub fn new(text: &str) -> String {
 
     return str_builder;
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn test1(){
+        let res = new("ab3\n");
+        let expect = "ababab";
+        if res != expect{
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
+
+    #[test]
+    fn teste_basile1() {
+        let res = new("a7-b5-a10\n");
+        let expect = "aaaaaaabbbbbaaaaaaaaaa";
+        if res != expect {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
+
+    #[test]
+    fn teste_basile2() {
+        let res = new("a6-b15-c1-d1\n");
+        let expect = "aaaaaabbbbbbbbbbbbbbbcd";
+        if res != expect {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
+} 
