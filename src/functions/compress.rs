@@ -7,7 +7,7 @@ fn find_period(text: &str) -> (usize, usize, &str) {
             let mut j = 0;
             let mut counter = 0;
 
-            while j + i < text.len() {
+            while j + i <= text.len() {
                 //println!("{j} {0}", &text[j..(j + i)]);
                 if text[0..i] != text[j..(j + i)] {
                     break;
@@ -22,7 +22,7 @@ fn find_period(text: &str) -> (usize, usize, &str) {
     return (1, 1, &text); 
 }
 
-pub fn new(text: &str){
+pub fn new(text: &str) -> String {
     let mut i = 0;
 
     let mut string_builder = String::from("");
@@ -32,10 +32,12 @@ pub fn new(text: &str){
         println!("{str} ");
         string_builder = format!("{string_builder}-{str}{counter}");  
         i += counter * buffer_size;
+        print!("{string_builder}");
     }
 
     string_builder = string_builder[1..].to_string(); 
 
-    print!("{string_builder}");
-    
+    print!("\nFinal Result: {string_builder}");
+    return string_builder;
+
 }
