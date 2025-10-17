@@ -1,7 +1,6 @@
 
 fn find_period(text: &str) -> (usize, usize, &str) {
-    let div = if text.len() % 2 == 0 && text.len() != 2 {0} else {1}; // split if impar
-    for i in 1..(text.len() / 2) + div {
+    for i in 1..(text.len() / 2) + 1 {
         if text[0..i] == text[i..(i*2)] {
             //print!("{i} {0} - {1} ", &text[0..i], &text[i..(i*2)]);
             //print!("true");
@@ -14,12 +13,13 @@ fn find_period(text: &str) -> (usize, usize, &str) {
                     break;
                 }
                 counter += 1;
-                j += i
+                j += i;
             }
             return (counter, i, &text[0..i]); 
         }
         //println!();
     }
+    print!("passed hier");
     return (1, 1, &text); 
 }
 
@@ -28,7 +28,7 @@ pub fn new(text: &str) -> String {
 
     let mut string_builder = String::from("");
 
-    while i < text.len(){
+    while i < text.len() {
         let (counter, buffer_size, str) = find_period(&text[i..]);
         println!("{str} ");
         string_builder = format!("{string_builder}-{str}{counter}");  
@@ -40,5 +40,36 @@ pub fn new(text: &str) -> String {
 
     print!("\nFinal Result: {string_builder}");
     return string_builder;
+}
 
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn check_singleton() {
+        let res = new("a");
+        let expect = "a1";
+        if  res != expect  {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
+
+    #[test]
+    fn check_simple() {
+        let res = new("abcdfabcdfabcdfabcdf");
+        let expect = "abcdf4";
+        if  res != expect  {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
+
+    #[test]
+    fn check_2predicate() {
+        let res = new("ab");
+        let expect = "a1-b1";
+        if  res != expect  {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
 }
