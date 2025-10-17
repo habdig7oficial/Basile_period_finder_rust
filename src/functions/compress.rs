@@ -19,8 +19,7 @@ fn find_period(text: &str) -> (usize, usize, &str) {
         }
         //println!();
     }
-    print!("passed hier");
-    return (1, 1, &text); 
+    return (1, 1, &text[0..1]);  
 }
 
 pub fn new(text: &str) -> String {
@@ -68,6 +67,14 @@ mod test {
     fn check_2predicate() {
         let res = new("ab");
         let expect = "a1-b1";
+        if  res != expect  {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
+    #[test]
+    fn check_advance() {
+        let res = new("abcdfabcdfabcdfabcdfcaabbabab");
+        let expect = "abcdf4-c1-a2-b2-ab2";
         if  res != expect  {
             panic!("Unexpected Result {res} != {expect}");
         }
