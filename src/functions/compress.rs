@@ -1,6 +1,7 @@
 
 fn find_period(text: &str) -> (usize, usize, &str) {
-    for i in 1..(text.len() / 2) {
+    let div = if text.len() % 2 == 0 && text.len() != 2 {0} else {1}; // split if impar
+    for i in 1..(text.len() / 2) + div {
         if text[0..i] == text[i..(i*2)] {
             //print!("{i} {0} - {1} ", &text[0..i], &text[i..(i*2)]);
             //print!("true");
