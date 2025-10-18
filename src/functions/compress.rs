@@ -97,4 +97,30 @@ mod test {
             panic!("Unexpected Result {res} != {expect}");
         }
     }
+
+    #[test]
+    fn teste_basile2() {
+        let res = new("ababababababaaaaaaaaaaaaaaa");
+        let expect = "ab6-a15";
+        if  res != expect  {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
+
+    #[test]
+    fn teste_basile3() {
+        let res = new("abcabcabcabcxyxyxyccccccc");
+        let expect = "abc4-xy3-c7";
+        if  res != expect  {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
+    #[test]
+    fn teste_basile4() {
+        let res = new("antonioantonioantoniocarloscarlos");
+        let expect = "antonio3-carlos2";
+        if  res != expect  {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
 }
