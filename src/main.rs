@@ -13,7 +13,7 @@ fn main() {
             let file = fs::read_to_string(&arguments[i + 1])
                 .expect("Coud not read file");
             println!("{file}\n");
-            compress::new(&file);
+            compress::new(&file[..file.len() -1]); // remove \n
         }
         else if arguments[i] == "-d" || arguments[i] == "--descompress"  {
             println!("Descompact {0}", &arguments[i + 1]);

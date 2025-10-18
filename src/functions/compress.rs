@@ -79,4 +79,22 @@ mod test {
             panic!("Unexpected Result {res} != {expect}");
         }
     }
+
+    #[test]
+    fn teste_basic() {
+        let res = new("aaaaaaabbbbbaaaaaaaaaa");
+        let expect = "a7-b5-a10";
+        if  res != expect  {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
+
+    #[test]
+    fn teste_basile1() {
+        let res = new("ababababababababababab");
+        let expect = "ab11";
+        if  res != expect  {
+            panic!("Unexpected Result {res} != {expect}");
+        }
+    }
 }
